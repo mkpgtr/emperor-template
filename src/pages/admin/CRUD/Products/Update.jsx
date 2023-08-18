@@ -1,8 +1,9 @@
 import React from 'react'
+import CRUDContainer from './CRUDContainer'
 
 const Update = () => {
   return (
-    <div>Update</div>
+   <CRUDContainer>Update</CRUDContainer>
   )
 }
 

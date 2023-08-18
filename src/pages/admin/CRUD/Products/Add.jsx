@@ -1,8 +1,11 @@
 import React from 'react'
+import CRUDContainer from './CRUDContainer'
 
 const Add = () => {
   return (
-    <div className='h-[33rem] overflow-y-scroll'>Add</div>
+    <CRUDContainer>
+        Add
+    </CRUDContainer>
   )
 }
 

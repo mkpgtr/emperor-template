@@ -1,8 +1,9 @@
 import React from 'react'
+import CRUDContainer from './CRUDContainer'
 
 const ShowAllProducts = () => {
   return (
-    <div>ShowAllProducts</div>
+    <CRUDContainer>Show All Products</CRUDContainer>
   )
 }
 
