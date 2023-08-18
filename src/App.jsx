@@ -73,7 +73,7 @@ useEffect(()=>{
     <>
       
         <Routes>
-          <Route path='/' element={<div className="flex">
+          <Route path='/' element={<div className="flex ">
           <div className={``}>
             <div
               className={`${open ? "w-72" : "w-20 "
