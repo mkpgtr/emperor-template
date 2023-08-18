@@ -3,7 +3,7 @@ import React from 'react'
 const ContentArea = ({children}) => {
   return (
     <div
-    className="h-screen flex-1 p-7"
+    className="flex-1 p-5"
     >{children}</div>
   )
 }

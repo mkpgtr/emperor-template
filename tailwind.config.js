@@ -2,6 +2,16 @@
 export default {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
+    screens: {
+      'sm': '768px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'lg': '1280px',
+      // => @media (min-width: 1280px) { ... }
+    },
     extend: {
       colors: {
         "dark-purple": "#081A51",
@@ -9,6 +19,6 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [import('@shrutibalasa/tailwind-grid-auto-fit')],
 }
 
