@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MenuItem from "./components/UI/dashboard/MenuItem";
 import { Menus } from "./data/MenuItems";
 import ContentArea from "./components/UI/ContentArea/ContentArea";
@@ -11,18 +11,27 @@ import { Orders } from "./pages/admin/Orders/Orders";
 import Search from "./pages/admin/search/Search";
 import Logout from "./pages/admin/Logout/Logout";
 import Analytics from "./pages/admin/Analytics/Analytics";
+ 
+
 
 
 const App = () => {
   const location = useLocation()
   const [open, setOpen] = useState(true);
+  const [alterToggleRef,setAlterToggleRef] = useState(true)
+
+  // ! ref
+
+
+  console.log('alter toggleref',alterToggleRef)
+  
   const [closeMenuOnClick,setCloseMenuOnClick] = useState(false)
   const getActiveIndex = ()=>{
     const activeItem = Menus.find((menuItem)=>{
       return menuItem.path === location.pathname
     })
 
-    return activeItem.id
+    return activeItem?.id
     
   }
 
@@ -32,6 +41,19 @@ const App = () => {
   const currentIndex = getActiveIndex();
   // set the blue highlighting dynamically according to the url in the address bar
   const [activeIndex, setActiveIndex] = useState(currentIndex || 0);
+
+ 
+
+    
+  
+
+  const handleOpen = ()=>{
+    setOpen(!open)
+  }
+    
+    
+
+
  
 
   useEffect(() => {
@@ -62,7 +84,6 @@ useEffect(()=>{
   if(window.innerWidth < 968 && open ){
     setCloseMenuOnClick(true)
   }else{
-    
     setCloseMenuOnClick(false)
   }
 },[open])
@@ -73,17 +94,18 @@ useEffect(()=>{
     <>
       
         <Routes>
-          <Route path='/' element={<div className="flex ">
-          <div className={``}>
+          <Route path='/admin' element={
+          <div className="flex">
+          <div className={`fixed`} >
             <div
-              className={`${open ? "w-72" : "w-20 "
+              className={`${open ? "w-72" : "w-20"
                 } bg-dark-purple h-screen p-5  pt-8 relative duration-300`}
             >
-              <img
+              <img 
                 src="./src/assets/control.png"
                 className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
-                onClick={() => setOpen(!open)}
+                onClick={handleOpen}
               />
               <div className="flex gap-x-4 items-center">
                 <img
@@ -104,25 +126,27 @@ useEffect(()=>{
 
            
           </div>
-          <ContentArea>
-              <Outlet />
-            </ContentArea>
+          <ContentArea shiftRight={open}>
+     <Outlet />
+   </ContentArea>
+         
 
           </div>
           }>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/inbox' element={<Inbox />} />
-            <Route path='/products' element={<Products />} />
-            <Route path='/orders' element={<Orders />} />
-            <Route path='/search' element={<Search />} />
-            <Route path='/logout' element={<Logout />} />
-            <Route path='/analytics' element={<Analytics />} />
+            <Route path='' element={<HomePage />} />
+            <Route path='inbox' element={<Inbox />} />
+            <Route path='products' element={<Products />} />
+            <Route path='orders' element={<Orders />} />
+            <Route path='search' element={<Search />} />
+            <Route path='logout' element={<Logout />} />
+            <Route path='analytics' element={<Analytics />} />
           </Route>
         </Routes>
   
-
+        
 
     </>
+    
   );
 };
 export default App;

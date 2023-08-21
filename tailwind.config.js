@@ -19,6 +19,6 @@ export default {
       },
     },
   },
-  plugins: [import('@shrutibalasa/tailwind-grid-auto-fit')],
+  plugins: [],
 }
 
